@@ -11,11 +11,6 @@ class Index extends  Controller
 {
     use Send;
 
-    public function __construct()
-    {
-
-    }
-
     public function index() {
         $result = file_get_contents("php://input");
 //        var_dump($result);die();
@@ -24,10 +19,11 @@ class Index extends  Controller
         }
         $json = json_decode($result,true);
         $results =  model("Datas")->getData($json);
-        if(empty($results)){
-            $this->returnmsg(500,[],[],'Internal Server Error',"Sql error","绑定失败~");
+//        var_dump($results);die();
+        if(!$results){
+            return self::returnmsg(500,[],[],'Internal Server Error',"Sql error","更新失败~");
         }else{
-            $this->render(200,$results);
+            return self::render(200,$results);
         }
 
         //exit;

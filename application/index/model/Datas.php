@@ -12,13 +12,10 @@ use think\Db;
 
 class Datas extends Model
 {
-
-    /* $param json $json
-     *
-     * */
     public function getData($json = ''){
 
-        $db = db("user")->where("id",$json["uuid"])->where("name",$json["name"])->field("*")->select();
+        $db = db("user")->where("id",$json["uuid"])->update(["name"=>"rain"]);
+//        var_dump($db);die();
         return $db;
     }
 }
