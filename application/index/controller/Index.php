@@ -13,6 +13,7 @@ class Index extends  Controller
 
     public function index() {
         $result = file_get_contents("php://input");
+        echo 'fuck';
 //        var_dump($result);die();
         if(empty($result)){
             $this->returnmsg(400);
