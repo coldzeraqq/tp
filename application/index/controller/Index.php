@@ -12,6 +12,7 @@ class Index extends  Controller
     use Send;
 
     public function index() {
+        echo 'merge1';
         $result = file_get_contents("php://input");
 //        var_dump($result);die();
         if(empty($result)){
